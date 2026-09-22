@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1007</width>
-    <height>866</height>
+    <width>921</width>
+    <height>481</height>
    </rect>
   </property>
   <property name="font">
@@ -22,8 +22,8 @@
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>200</y>
+      <x>380</x>
+      <y>70</y>
       <width>131</width>
       <height>26</height>
      </rect>
@@ -32,10 +32,10 @@
    <widget class="QWidget" name="MainDownload" native="true">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>260</y>
-      <width>801</width>
-      <height>381</height>
+      <x>0</x>
+      <y>100</y>
+      <width>811</width>
+      <height>261</height>
      </rect>
     </property>
     <widget class="QGraphicsView" name="graphicsView">
@@ -44,10 +44,10 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>445</x>
-       <y>21</y>
-       <width>341</width>
-       <height>311</height>
+       <x>490</x>
+       <y>60</y>
+       <width>321</width>
+       <height>181</height>
       </rect>
      </property>
      <property name="maximumSize">
@@ -106,8 +106,8 @@
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>200</y>
+      <x>10</x>
+      <y>70</y>
       <width>351</width>
       <height>26</height>
      </rect>
@@ -116,37 +116,11 @@
      <string>Insert YouTube URL here</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>200</y>
-      <width>131</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Audio Only</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="progressBar">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>690</y>
-      <width>591</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>24</number>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>170</y>
+      <x>10</x>
+      <y>40</y>
       <width>151</width>
       <height>16</height>
      </rect>
@@ -163,8 +137,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>650</y>
+      <x>0</x>
+      <y>360</y>
       <width>161</width>
       <height>26</height>
      </rect>
@@ -173,13 +147,26 @@
      <string>Download</string>
     </property>
    </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>70</y>
+      <width>131</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Audio Only</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1007</width>
+     <width>921</width>
      <height>33</height>
     </rect>
    </property>
