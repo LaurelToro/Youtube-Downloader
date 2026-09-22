@@ -8,6 +8,8 @@ There is plenty of code comments, the main chunk of code in regards to Tkinter w
 I might come back to fix things as they break, but I can't promise anything. 
 Hope you have fun using my program, and it can help you save some important videos!
 
+To run the program, either run the .exe install the various dependencies and run it through Python.
+
 Little fyi, the download is VERY cpu intensive, so just be prepared for that if you are downloading in anything above 1080p.
 
 Love, Toro. 
