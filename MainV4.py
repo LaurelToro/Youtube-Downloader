@@ -1,5 +1,6 @@
 import sys
 import re
+from pathlib import Path
 from urllib.request import urlopen
 from PyQt6 import QtCore, QtWidgets, uic
 from PyQt6.QtGui import QAction, QPixmap
@@ -8,8 +9,9 @@ from pytubefix import Playlist
 import YouTube_HandlingV4 as yt_handler
 import Write_FileV2 as file_writer
 app = QtWidgets.QApplication(sys.argv)
+UI = Path(__file__).resolve().parent / "YouTube Downloader.ui"
 
-window = uic.loadUi("YouTube Downloader.ui")
+window = uic.loadUi(UI)
 
 class PlaylistWorker(QtCore.QObject):
     status_changed = QtCore.pyqtSignal(str)
