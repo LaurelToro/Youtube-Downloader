@@ -3,15 +3,16 @@ import re
 from pathlib import Path
 from urllib.request import urlopen
 from PyQt6 import QtCore, QtWidgets, uic
-from PyQt6.QtGui import QAction, QPixmap
+from PyQt6.QtGui import QAction, QPixmap, QDesktopServices, QIcon
 from PyQt6.QtWidgets import QFileDialog
 from pytubefix import Playlist
 import YouTube_HandlingV4 as yt_handler
 import Write_FileV2 as file_writer
 app = QtWidgets.QApplication(sys.argv)
 UI = Path(__file__).resolve().parent / "YouTube Downloader.ui"
-
+icon_path= Path(__file__).resolve().parent / "app.ico"
 window = uic.loadUi(UI)
+window.setWindowIcon(QIcon(str(icon_path)))
 
 class PlaylistWorker(QtCore.QObject):
     status_changed = QtCore.pyqtSignal(str)
@@ -81,7 +82,7 @@ def set_status(message):
 
 def load_video_resolution():
     user_link = get_user_link()
-    yt_handler.load_video(user_link)
+    yt_handler.load_video(user_link, oauth)
     resolutions = yt_handler.get_available_resolutions()
     window.comboBox.clear()
     window.comboBox.addItems(resolutions)
@@ -110,12 +111,20 @@ def show_thumbnail(thumbnail_url):
     )
 
 def submit_url():
-    set_status("Loading video information...")
-    load_video_resolution()
-    if window.checkBox.isChecked():
-        load_audio_streams()
-    print_text()
-    set_status("Ready")
+    try:
+        set_status("Loading video information...")
+        load_video_resolution()
+        if window.checkBox.isChecked():
+            load_audio_streams()
+        print_text()
+        set_status("Ready")
+    except Exception as error:
+        set_status(f"Failed to load video: {error}")
+        QtWidgets.QMessageBox.critical(
+            window,
+            "Unable to load video",
+            f"The video could not be loaded:\n\n{error}",
+        )
 
 def load_audio_streams():
     audio_streams = yt_handler.get_audio_streams()
@@ -123,6 +132,31 @@ def load_audio_streams():
     for stream in audio_streams:
         option = f"{stream.subtype} - {stream.abr}"
         window.comboBox.addItem(option, stream)
+
+def oauth(verification_url, user_code):
+    dialog = QtWidgets.QMessageBox(window)
+    dialog.setWindowTitle("YouTube Authentication")
+    dialog.setText(
+        f"Open this link:\n{verification_url}\n\n"
+        f"Enter this code:\n{user_code}"
+    )
+
+    open_button = dialog.addButton(
+        "Open Link",
+        QtWidgets.QMessageBox.ButtonRole.ActionRole,
+    )
+    dialog.addButton(
+        "Continue",
+        QtWidgets.QMessageBox.ButtonRole.AcceptRole,
+    )
+
+    def open_verification_link():
+        if not QDesktopServices.openUrl(QtCore.QUrl(verification_url)):
+            dialog.setInformativeText("The link could not be opened automatically.")
+
+    open_button.clicked.connect(open_verification_link)
+
+    dialog.exec()
 
 def download_video():
     if yt_handler.yt is None:

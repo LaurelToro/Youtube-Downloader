@@ -6,9 +6,15 @@ TEMP_DIR = Path(__file__).resolve().parent / "YouTuber Downloader" / "Temp files
 
 yt=None
 
-def load_video(user_link):
+def load_video(user_link, oauth_verifier=None):
     global yt
-    yt = YouTube(user_link)
+    yt = YouTube(
+        user_link,
+        use_oauth=True,
+        allow_oauth_cache=True,
+        oauth_verifier=oauth_verifier,
+    )
+
 
 def get_available_resolutions():
     video_streams = yt.streams.filter(
