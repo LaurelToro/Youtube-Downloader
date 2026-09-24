@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>827</width>
-    <height>485</height>
+    <width>860</width>
+    <height>554</height>
    </rect>
   </property>
   <property name="font">
@@ -18,25 +18,115 @@
   <property name="windowTitle">
    <string>YouTube Downloader</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>app.ico</normaloff>app.ico</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* 1. Main background */
+QMainWindow, QWidget#centralwidget, QFrame#frame {
+    background-color: #0f0f0f;
+}
+
+/* 2. QFrames */
+QFrame {
+    background-color: #212121 !important;
+    border: 1px solid #2f2f2f;
+    border-radius: 12px;
+}
+
+/* 3. Text-labels, makes the text appear white */
+QLabel {
+    background-color: transparent !important;
+    color: #1f2937 !important; 
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+}
+QLabel#label, QLabel#label_2, QLabel#label_4{
+	font-weight:bold;
+	font-family: &quot;Segoe UI&quot;, sans-serif;
+}
+
+/* 4. Textfields and Dropdowns */
+QLineEdit, QComboBox {
+    border: 1px solid #3d3d3d;
+    border-radius: 8px;
+    padding: 6px 12px;
+    background-color: #121212 !important;
+    color: #ffffff !important;
+}
+
+QLineEdit:focus, QComboBox:focus {
+    border: 2px solid #ff0000;
+    background-color: #0f0f0f !important;
+}
+
+
+QComboBox QAbstractItemView {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    border: 1px solid #3d3d3d;
+    selection-background-color: #ff0000;
+    selection-color: #ffffff;
+}
+/* 6. Faner i toppen (Single Video / Playlists) */
+QTabBar::tab {
+    background: transparent;
+    color: #aaaaaa;
+    padding: 8px 16px;
+}
+QTabBar::tab:selected {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* 7. De røde YouTube-knapper */
+QPushButton {
+    background-color: #ff0000 !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+}
+QPushButton:hover {
+    background-color: #cc0000 !important;
+}
+QPushButton:pressed {
+    background-color: #990000 !important;
+}
+</string>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::TabShape::Rounded</enum>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>70</y>
-      <width>131</width>
-      <height>26</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QWidget" name="MainDownload" native="true">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QFrame" name="MainDownload">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>130</y>
-      <width>781</width>
+      <y>180</y>
+      <width>831</width>
       <height>241</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#MainDownload {
+    border: 2px solid black;
+    background-color: #f0f0f0;
+	border-radius: 25px
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::Panel</enum>
     </property>
     <widget class="QGraphicsView" name="graphicsView">
      <property name="enabled">
@@ -45,7 +135,7 @@
      <property name="geometry">
       <rect>
        <x>490</x>
-       <y>60</y>
+       <y>20</y>
        <width>321</width>
        <height>181</height>
       </rect>
@@ -62,12 +152,15 @@
       <rect>
        <x>20</x>
        <y>30</y>
-       <width>321</width>
+       <width>371</width>
        <height>71</height>
       </rect>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::TextFormat::AutoText</enum>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -78,12 +171,15 @@
       <rect>
        <x>20</x>
        <y>120</y>
-       <width>291</width>
+       <width>371</width>
        <height>31</height>
       </rect>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::TextFormat::AutoText</enum>
      </property>
      <property name="wordWrap">
       <bool>false</bool>
@@ -94,84 +190,205 @@
       <rect>
        <x>20</x>
        <y>160</y>
-       <width>311</width>
+       <width>371</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
      <property name="text">
       <string/>
      </property>
+     <property name="textFormat">
+      <enum>Qt::TextFormat::AutoText</enum>
+     </property>
     </widget>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>70</y>
-      <width>351</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Insert YouTube URL here</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>151</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Insert URL here</string>
-    </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>380</y>
+      <x>10</x>
+      <y>430</y>
       <width>161</width>
-      <height>26</height>
+      <height>40</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Download</string>
     </property>
-   </widget>
-   <widget class="QCheckBox" name="checkBox">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>70</y>
-      <width>131</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Audio Only</string>
+    <property name="icon">
+     <iconset theme="QIcon::ThemeIcon::DocumentSave"/>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>100</y>
+      <y>130</y>
       <width>191</width>
-      <height>26</height>
+      <height>40</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton_2 {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 5px 10px;
+}</string>
     </property>
     <property name="text">
      <string>Get video</string>
     </property>
+    <property name="icon">
+     <iconset theme="QIcon::ThemeIcon::MailAttachment"/>
+    </property>
+   </widget>
+   <widget class="QFrame" name="Insert">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>821</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#Insert {
+    border: 2px solid black;
+    background-color: #f0f0f0;
+	border-radius: 12.5px
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::Panel</enum>
+    </property>
+    <widget class="QCheckBox" name="checkBox">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>20</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Audio Only</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Paste your video URL below</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>351</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>Insert YouTube URL here</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>50</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>Video/Audio quality</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="authenticationCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>20</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Use YouTube auth</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>420</y>
+      <width>211</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#frame {
+    border: 2px solid black;
+    background-color: #f0f0f0;
+	border-radius: 12.5px
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QLabel" name="status_update">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -179,11 +396,49 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>827</width>
+     <width>860</width>
      <height>33</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QMenuBar {
+    background-color: #ffffff;      /* Give it a solid background */
+    border-bottom: 2px solid black; /* Adds a clean bottom border line */
+    padding: 2px;
+}
+
+QMenuBar::item {
+    background-color: transparent;
+    padding: 4px 10px;
+    margin: 2px;
+}
+
+QMenuBar::item:selected { 
+    background-color: #e8f4fd;       /* Highlights the menu when hovered */
+    border-radius: 4px;
+}
+</string>
+   </property>
    <widget class="QMenu" name="menuPlaylists">
+    <property name="styleSheet">
+     <string notr="true">QMenu {
+    background-color: #ffffff;
+    border-bottom: 2px solid #3498db;
+    padding: 2px;
+}
+
+QMenu::item {
+    background-color: transparent;
+    padding: 4px 10px;
+    margin: 2px;
+}
+
+QMenu::item:selected { 
+    background-color: #e8f4fd;
+    border-radius: 4px;
+}
+</string>
+    </property>
     <property name="title">
      <string>Playlists</string>
     </property>
@@ -196,7 +451,6 @@
    <addaction name="menuYouTube_Downloader"/>
    <addaction name="menuPlaylists"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

@@ -77,23 +77,27 @@ def get_user_link():
     return window.lineEdit.text().strip()
 
 def set_status(message):
-    window.statusbar.showMessage(message)
+    window.status_update.setText(message)
     QtWidgets.QApplication.processEvents()
 
 def load_video_resolution():
     user_link = get_user_link()
-    yt_handler.load_video(user_link, oauth)
+    yt_handler.load_video(
+        user_link,
+        oauth,
+        use_oauth=window.authenticationCheckBox.isChecked(),
+    )
     resolutions = yt_handler.get_available_resolutions()
     window.comboBox.clear()
     window.comboBox.addItems(resolutions)
 
 def print_text():
     title, channel, length, thumbnail_url = yt_handler.get_video_info(yt_handler.yt)
-    title = "Title: " + title
+    title = "Title:\n" + title
     channel = "Channel: " + channel
     window.label.setText(title)
     window.label_2.setText(channel)
-    window.label_4.setText(str(length))
+    window.label_4.setText("Run time: "+str(length))
     show_thumbnail(thumbnail_url)
 
 def show_thumbnail(thumbnail_url):

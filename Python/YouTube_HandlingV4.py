@@ -6,13 +6,13 @@ TEMP_DIR = Path(__file__).resolve().parent / "YouTuber Downloader" / "Temp files
 
 yt=None
 
-def load_video(user_link, oauth_verifier=None):
+def load_video(user_link, oauth_verifier=None, use_oauth=True):
     global yt
     yt = YouTube(
         user_link,
-        use_oauth=True,
-        allow_oauth_cache=True,
-        oauth_verifier=oauth_verifier,
+        use_oauth=use_oauth,
+        allow_oauth_cache=use_oauth,
+        oauth_verifier=oauth_verifier if use_oauth else None,
     )
 
 
