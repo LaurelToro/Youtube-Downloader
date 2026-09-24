@@ -38,15 +38,16 @@ QFrame {
     border-radius: 12px;
 }
 
-/* 3. Text-labels, makes the text appear white */
+/* 3. Text-labels, makes the text appear white and blocks Windows overrides */
 QLabel {
     background-color: transparent !important;
-    color: #1f2937 !important; 
+    color: #ffffff !important; /* TVUNGET HVID: Stopper Windows i at gøre teksten usynlig eller lave lyse felter */
     font-family: &quot;Segoe UI&quot;, sans-serif;
 }
 QLabel#label, QLabel#label_2, QLabel#label_4{
-	font-weight:bold;
-	font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-weight: bold;
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    color: #ffffff !important; /* SIKRER hvid tekst på dine tre info-labels i bunden */
 }
 
 /* 4. Textfields and Dropdowns */
@@ -63,7 +64,6 @@ QLineEdit:focus, QComboBox:focus {
     background-color: #0f0f0f !important;
 }
 
-
 QComboBox QAbstractItemView {
     background-color: #121212 !important;
     color: #ffffff !important;
@@ -71,6 +71,16 @@ QComboBox QAbstractItemView {
     selection-background-color: #ff0000;
     selection-color: #ffffff;
 }
+
+/* 5. Tjekbokse (Audio Only &amp; YouTube Auth) */
+QCheckBox {
+    background-color: transparent !important;
+    color: #ffffff !important; /* TVUNGET HVID: Teksten ved tjekboksene forbliver altid læselig på mørk baggrund */
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 13px;
+    spacing: 6px;
+}
+
 /* 6. Faner i toppen (Single Video / Playlists) */
 QTabBar::tab {
     background: transparent;
@@ -120,8 +130,8 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QWidget#MainDownload {
-    border: 2px solid black;
-    background-color: #f0f0f0;
+    border: 2px solid #3d3d3d;
+    background-color: #212121;
 	border-radius: 25px
 }</string>
     </property>
@@ -262,8 +272,8 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QWidget#Insert {
-    border: 2px solid black;
-    background-color: #f0f0f0;
+    border: 2px solid #3d3d3d;
+    background-color: #212121;
 	border-radius: 12.5px
 }</string>
     </property>
@@ -356,8 +366,8 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QWidget#frame {
-    border: 2px solid black;
-    background-color: #f0f0f0;
+    border: 2px solid #3d3d3d;
+    background-color: #212121;
 	border-radius: 12.5px
 }</string>
     </property>
@@ -402,8 +412,9 @@ QPushButton:pressed {
    </property>
    <property name="styleSheet">
     <string notr="true">QMenuBar {
-    background-color: #ffffff;      /* Give it a solid background */
-    border-bottom: 2px solid black; /* Adds a clean bottom border line */
+    background-color: #212121;
+    color: #ffffff;
+    border-bottom: 2px solid #3d3d3d;
     padding: 2px;
 }
 
@@ -414,7 +425,8 @@ QMenuBar::item {
 }
 
 QMenuBar::item:selected { 
-    background-color: #e8f4fd;       /* Highlights the menu when hovered */
+    background-color: #3d3d3d;
+    color: #ffffff;
     border-radius: 4px;
 }
 </string>
@@ -422,8 +434,9 @@ QMenuBar::item:selected {
    <widget class="QMenu" name="menuPlaylists">
     <property name="styleSheet">
      <string notr="true">QMenu {
-    background-color: #ffffff;
-    border-bottom: 2px solid #3498db;
+    background-color: #212121;
+    color: #ffffff;
+    border: 1px solid #3d3d3d;
     padding: 2px;
 }
 
@@ -434,7 +447,8 @@ QMenu::item {
 }
 
 QMenu::item:selected { 
-    background-color: #e8f4fd;
+    background-color: #3d3d3d;
+    color: #ffffff;
     border-radius: 4px;
 }
 </string>
