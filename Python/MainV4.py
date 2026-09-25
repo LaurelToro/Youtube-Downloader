@@ -10,29 +10,6 @@ import YouTube_HandlingV4 as yt_handler
 import Write_FileV2 as file_writer
 app = QtWidgets.QApplication(sys.argv)
 app.setStyle('Fusion')
-app.setStyleSheet("""
-QMessageBox, QDialog {
-    background-color: #212121;
-    color: #ffffff;
-}
-QMessageBox QLabel, QDialog QLabel {
-    color: #ffffff;
-}
-QMessageBox QPushButton, QDialogButtonBox QPushButton {
-    background-color: #ff0000;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 16px;
-    min-width: 70px;
-}
-QMessageBox QPushButton:hover, QDialogButtonBox QPushButton:hover {
-    background-color: #cc0000;
-}
-QMessageBox QPushButton:pressed, QDialogButtonBox QPushButton:pressed {
-    background-color: #990000;
-}
-""")
 UI = Path(__file__).resolve().parent / "YouTube Downloader.ui"
 icon_path= Path(__file__).resolve().parent / "app.ico"
 window = uic.loadUi(UI)
